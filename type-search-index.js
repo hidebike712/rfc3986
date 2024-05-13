@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"Authority","h":"","u":""},{"l":"Host","h":"","u":""},{"l":"HostType","h":"","u":""},{"l":"URIReference","h":"","u":""},{"l":"URIReferenceBuilder","h":"","u":""},{"l":"すべてのクラス","h":"","u":"allclasses-index.html"}]

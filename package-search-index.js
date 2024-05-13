@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"org.czeal.rfc3986","h":"","u":""},{"l":"すべてのパッケージ","h":"","u":"allpackages-index.html"}]
