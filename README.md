@@ -239,9 +239,9 @@ URIReference normalized = URIReference.parse("hTTp://example.com") // Parse.
                                       .normalize();                // Normalize.
 
 System.out.println(normalized.toString());                // "http://example.com/"
-System.out.println(uriRef.isRelativeReference());         // false
-System.out.println(uriRef.getScheme());                   // "http"
-System.out.println(uriRef.hasAuthority());                // true
+System.out.println(normalized.isRelativeReference());     // false
+System.out.println(normalized.getScheme());               // "http"
+System.out.println(normalized.hasAuthority());            // true
 System.out.println(normalized.getAuthority().toString()); // "example.com"
 System.out.println(normalized.getUserinfo());             // null
 System.out.println(normalized.getHost().getType());       // "REGNAME"
@@ -259,9 +259,9 @@ URIReference normalized = URIReference.parse("http://%65%78%61%6D%70%6C%65.com")
                                       .normalize();                              // Normalize.
 
 System.out.println(normalized.toString());                // "http://example.com/"
-System.out.println(uriRef.isRelativeReference());         // false
-System.out.println(uriRef.getScheme());                   // "http"
-System.out.println(uriRef.hasAuthority());                // true
+System.out.println(normalized.isRelativeReference());     // false
+System.out.println(normalized.getScheme());               // "http"
+System.out.println(normalized.hasAuthority());            // true
 System.out.println(normalized.getAuthority().toString()); // "example.com"
 System.out.println(normalized.getUserinfo());             // null
 System.out.println(normalized.getHost().getType());       // "REGNAME"
@@ -279,9 +279,9 @@ URIReference normalized = URIReference.parse("http://example.com/a/b/c/../d/") /
                                       .normalize();                            // Normalize.
 
 System.out.println(normalized.toString());                // "http://example.com/a/b/d/"
-System.out.println(uriRef.isRelativeReference());         // false
-System.out.println(uriRef.getScheme());                   // "http"
-System.out.println(uriRef.hasAuthority());                // true
+System.out.println(normalized.isRelativeReference());     // false
+System.out.println(normalized.getScheme());               // "http"
+System.out.println(normalized.hasAuthority());            // true
 System.out.println(normalized.getAuthority().toString()); // "example.com"
 System.out.println(normalized.getUserinfo());             // null
 System.out.println(normalized.getHost().getType());       // "REGNAME"
@@ -306,9 +306,9 @@ URIReference resolved = relRef.resolve("http://example.com");
 URIReference normalized = resolved.normalize();
 
 System.out.println(normalized.toString());                // "http://example.com/a/b/d/"
-System.out.println(uriRef.isRelativeReference());         // false
-System.out.println(uriRef.getScheme());                   // "http"
-System.out.println(uriRef.hasAuthority());                // true
+System.out.println(normalized.isRelativeReference());     // false
+System.out.println(normalized.getScheme());               // "http"
+System.out.println(normalized.hasAuthority());            // true
 System.out.println(normalized.getAuthority().toString()); // "example.com"
 System.out.println(normalized.getUserinfo());             // null
 System.out.println(normalized.getHost().getType());       // "REGNAME"
