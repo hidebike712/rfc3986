@@ -5,6 +5,57 @@ plugins {
     id "com.vanniktech.maven.publish" version "0.28.0"
 }
 
+repositories {
+    // Use Maven Central for resolving dependencies.
+    mavenCentral()
+}
+
+dependencies {
+    // Use JUnit Jupiter API for testing.
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.9.1'
+
+    // Export this dependency to consumers, meaning it will be available on their compile classpath.
+    api 'org.apache.commons:commons-math3:3.6.1'
+
+    // Use this dependency internally; it's not exposed to consumers on their compile classpath.
+    implementation 'com.google.guava:guava:33.0.0-jre'
+}
+
+// Configure the test task to use the JUnit Platform for unit tests.
+tasks.named('test') {
+    useJUnitPlatform()
+}
+
+// Apply the Java plugin for additional Java-related functionality in Gradle.
+apply plugin: 'java'
+
+// Configure the jar task to include the project version in the generated JAR file name.
+jar {
+    archiveBaseName = 'rfc3986'
+    archiveVersion = '0.1.0'
+    archiveClassifier = null
+}
+
+// Configure the test logging to be more verbose and informative.
+test {
+    testLogging {
+        outputs.upToDateWhen { false }
+        showStandardStreams = true
+    }
+}
+
+// Configure the Javadoc generation task with custom options.
+javadoc {
+    options {
+        noQualifiers 'all'
+        addStringOption('stylesheetfile', file('custom.css').absolutePath)
+        locale 'en_US'
+        encoding 'UTF-8'
+        charSet 'UTF-8'
+        docEncoding 'UTF-8'
+    }
+}
+
 import com.vanniktech.maven.publish.JavaLibrary
 import com.vanniktech.maven.publish.JavadocJar
 
