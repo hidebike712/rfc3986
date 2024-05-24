@@ -58,12 +58,11 @@ javadoc {
 
 import com.vanniktech.maven.publish.JavaLibrary
 import com.vanniktech.maven.publish.JavadocJar
+import com.vanniktech.maven.publish.SonatypeHost
 
 mavenPublishing {
     configure(new JavaLibrary(new JavadocJar.Javadoc(), true))
 }
-
-import com.vanniktech.maven.publish.SonatypeHost
 
 mavenPublishing {
     publishToMavenCentral(SonatypeHost.CENTRAL_PORTAL)
