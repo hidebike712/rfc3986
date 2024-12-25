@@ -19,6 +19,7 @@ package org.czeal.rfc3986;
 import static org.czeal.rfc3986.TestUtils.assertThrowsIAE;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.czeal.rfc3986.HostType.IPV4;
 import static org.czeal.rfc3986.HostType.IPV6;
 import static org.czeal.rfc3986.HostType.IPVFUTURE;
@@ -133,5 +134,12 @@ public class AuthorityTest
         assertEquals("[v1.fe80::a+en1]", Authority.parse("[v1.fe80::a+en1]").toString());
         assertEquals("%65%78%61%6D%70%6C%65%2E%63%6F%6D", Authority.parse("%65%78%61%6D%70%6C%65%2E%63%6F%6D").toString());
         assertEquals("", Authority.parse("").toString());
+    }
+
+
+    @Test
+    public void test_equals()
+    {
+        assertFalse(Authority.parse("FB").equals(Authority.parse("Ea")));
     }
 }

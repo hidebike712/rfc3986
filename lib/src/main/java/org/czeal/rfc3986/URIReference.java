@@ -524,21 +524,33 @@ public class URIReference implements Serializable, Comparable<URIReference>
      * {@code path}, {@code query}, and {@code fragment} components.
      * </p>
      *
-     * @param other
+     * @param obj
      *         The object to be compared for equality with this {@link URIReference}.
      *
      * @return
      *         {@code true} if the specified object is equal to this {@link URIReference}.
      */
     @Override
-    public boolean equals(Object other)
+    public boolean equals(Object obj)
     {
-        if (!(other instanceof URIReference))
+        if (this == obj)
+        {
+            return true;
+        }
+
+        if (obj == null || getClass() != obj.getClass())
         {
             return false;
         }
 
-        return compareTo((URIReference)other) == 0;
+        URIReference other = (URIReference)obj;
+
+        // Compare all components for equality.
+        return Objects.equals(this.scheme, other.scheme) &&
+               Objects.equals(this.authority, other.authority) &&
+               Objects.equals(this.path, other.path) &&
+               Objects.equals(this.query, other.query) &&
+               Objects.equals(this.fragment, other.fragment);
     }
 
 
