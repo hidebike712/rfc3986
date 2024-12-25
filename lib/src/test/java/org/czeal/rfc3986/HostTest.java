@@ -19,6 +19,7 @@ package org.czeal.rfc3986;
 import static org.czeal.rfc3986.TestUtils.assertThrowsIAE;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.czeal.rfc3986.HostType.IPV4;
 import static org.czeal.rfc3986.HostType.IPV6;
 import static org.czeal.rfc3986.HostType.IPVFUTURE;
@@ -84,5 +85,12 @@ public class HostTest
         assertEquals("%65%78%61%6D%70%6C%65%2E%63%6F%6D", Host.parse("%65%78%61%6D%70%6C%65%2E%63%6F%6D").getValue());
         assertEquals("", Host.parse("").getValue());
         assertEquals((String)null, Host.parse(null).getValue());
+    }
+
+
+    @Test
+    public void test_equals()
+    {
+        assertFalse(Host.parse("FB").equals(Host.parse("Ea")));
     }
 }

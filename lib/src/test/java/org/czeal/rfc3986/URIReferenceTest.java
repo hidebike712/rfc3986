@@ -20,6 +20,7 @@ import static org.czeal.rfc3986.TestUtils.assertThrowsIAE;
 import static org.czeal.rfc3986.TestUtils.assertThrowsISE;
 import static org.czeal.rfc3986.TestUtils.assertThrowsNPE;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.czeal.rfc3986.HostType.IPV4;
 import static org.czeal.rfc3986.HostType.IPV6;
@@ -858,6 +859,7 @@ public class URIReferenceTest
         assertTrue(URIReference.parse("http:a").equals(URIReference.parse("http:a")));
         assertTrue(URIReference.parse("//").equals(URIReference.parse("//")));
         assertTrue(URIReference.parse("").equals(URIReference.parse("")));
+        assertFalse(URIReference.parse("http://example.com/1ot").equals(URIReference.parse("http://example.com/1pU")));
     }
 
 

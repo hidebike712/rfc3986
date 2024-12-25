@@ -260,7 +260,7 @@ public class Host implements Serializable, Comparable<Host>
      * Compares this {@link Host} object with the specified object for equality.
      * The comparison is based on the type and value of this {@link Host} object.
      *
-     * @param other
+     * @param obj
      *         The object to be compared for equality with this {@link Host} object.
      *
      * @return
@@ -268,14 +268,23 @@ public class Host implements Serializable, Comparable<Host>
      *         object.
      */
     @Override
-    public boolean equals(Object other)
+    public boolean equals(Object obj)
     {
-        if (!(other instanceof Host))
+        if (this == obj)
+        {
+            return true;
+        }
+
+        if (obj == null || getClass() != obj.getClass())
         {
             return false;
         }
 
-        return compareTo((Host)other) == 0;
+        Host other = (Host)obj;
+
+        // Compare all components for equality.
+        return Objects.equals(this.type, other.type) &&
+               Objects.equals(this.value, other.value);
     }
 
 

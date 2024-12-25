@@ -353,7 +353,7 @@ public class Authority implements Serializable, Comparable<Authority>
      * The comparison is based on the values of {@code userinfo}, {@code host},
      * and {@code port} components.
      *
-     * @param other
+     * @param obj
      *         The object to be compared for equality with this {@link Authority}
      *         object.
      *
@@ -362,14 +362,24 @@ public class Authority implements Serializable, Comparable<Authority>
      *         object.
      */
     @Override
-    public boolean equals(Object other)
+    public boolean equals(Object obj)
     {
-        if (!(other instanceof Authority))
+        if (this == obj)
+        {
+            return true;
+        }
+
+        if (obj == null || getClass() != obj.getClass())
         {
             return false;
         }
 
-        return compareTo((Authority)other) == 0;
+        Authority other = (Authority)obj;
+
+        // Compare all components for equality.
+        return Objects.equals(this.userinfo, other.userinfo) &&
+               Objects.equals(this.host, other.host) &&
+               this.port == other.port;
     }
 
 
