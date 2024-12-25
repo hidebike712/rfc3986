@@ -26,7 +26,7 @@ apply plugin: 'java'
 // Configure the jar task to include the project version in the generated JAR file name.
 jar {
     archiveBaseName = 'rfc3986'
-    archiveVersion = '0.1.0'
+    archiveVersion = '0.1.1'
     archiveClassifier = null
 }
 
@@ -64,7 +64,7 @@ mavenPublishing {
 }
 
 mavenPublishing {
-    coordinates("org.czeal", "rfc3986", "0.1.0")
+    coordinates("org.czeal", "rfc3986", "0.1.1")
 
     pom {
         name = "Java URI Library Compliant with RFC 3986"
