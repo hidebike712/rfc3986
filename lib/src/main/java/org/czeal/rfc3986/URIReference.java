@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2024 Hideki Ikeda
+ * Copyright (C) 2024-2025 Hideki Ikeda
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,6 +17,7 @@ package org.czeal.rfc3986;
 
 
 import static java.nio.charset.StandardCharsets.UTF_8;
+import static org.czeal.rfc3986.Utils.newNPE;
 import java.io.Serializable;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
@@ -573,24 +574,36 @@ public class URIReference implements Serializable, Comparable<URIReference>
 
 
     /**
-     * Compares this {@link URIReference} with another {@link URIReference} for order.
-     *
-     * <p>
-     * The comparison is primarily based on the string representation of the {@link
-     * Authority} objects.
-     * </p>
+     * Compares this {@link URIReference} object with another {@link URIReference}
+     * object for order. The comparison is based on the string representation of
+     * the {@link URIReference} objects.
      *
      * @param other
-     *         The {@link URIReference} to be compared.
+     *         The {@link URIReference} object to be compared.
      *
      * @return
-     *         A negative integer, zero, or a positive integer as this {@link URIReference}
-     *         is less than, equal to, or greater than the specified {@link URIReference}.
+     *         0 if this {@link URIReference} object is equal to the specified
+     *         {@link URIReference} object. A negative value if this {@link URIReference}
+     *         object is less than the specified object. A positive value if this
+     *         {@link URIReference} object is greater than the specified object.
+     *
+     * @throws NullPointerException
+     *          If the specified {@link URIReference} object is {@code null}.
      */
     @Override
     public int compareTo(URIReference other)
     {
-        return this.hashCode() - other.hashCode();
+        if (other == null)
+        {
+            throw newNPE("A null value is not comparable.");
+        }
+
+        if (this.equals(other))
+        {
+            return 0;
+        }
+
+        return this.toString().compareTo(other.toString());
     }
 
 

@@ -21,6 +21,7 @@ import static org.czeal.rfc3986.TestUtils.assertThrowsISE;
 import static org.czeal.rfc3986.TestUtils.assertThrowsNPE;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.czeal.rfc3986.HostType.IPV4;
 import static org.czeal.rfc3986.HostType.IPV6;
@@ -1465,5 +1466,14 @@ public class URIReferenceTest
         assertThrowsISE(
             "A relative references must be resolved before it can be normalized.",
             () -> URIReference.parse("//example.com").normalize());
+    }
+
+
+    @Test
+    public void test_compareTo()
+    {
+        assertEquals(0, URIReference.parse("example.com/a/b/c/").compareTo(URIReference.parse("example.com/a/b/c/")));
+        assertTrue(URIReference.parse("127.0.0.1").compareTo(URIReference.parse("example.com/a/b/c/")) < 0);
+        assertThrows(NullPointerException.class, () -> URIReference.parse("example.com/a/b/c/").compareTo(null));
     }
 }

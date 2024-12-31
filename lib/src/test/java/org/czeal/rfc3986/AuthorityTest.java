@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2024 Hideki Ikeda
+ * Copyright (C) 2024-2025 Hideki Ikeda
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,6 +20,8 @@ import static org.czeal.rfc3986.TestUtils.assertThrowsIAE;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.czeal.rfc3986.HostType.IPV4;
 import static org.czeal.rfc3986.HostType.IPV6;
 import static org.czeal.rfc3986.HostType.IPVFUTURE;
@@ -141,5 +143,14 @@ public class AuthorityTest
     public void test_equals()
     {
         assertFalse(Authority.parse("FB").equals(Authority.parse("Ea")));
+    }
+
+
+    @Test
+    public void test_compareTo()
+    {
+        assertEquals(0, Authority.parse("example.com").compareTo(Authority.parse("example.com")));
+        assertTrue(Authority.parse("127.0.0.1").compareTo(Authority.parse("example.com")) < 0);
+        assertThrows(NullPointerException.class, () -> Authority.parse("example.com").compareTo(null));
     }
 }
