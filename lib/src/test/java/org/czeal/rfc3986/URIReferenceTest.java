@@ -1466,4 +1466,15 @@ public class URIReferenceTest
             "A relative references must be resolved before it can be normalized.",
             () -> URIReference.parse("//example.com").normalize());
     }
+
+
+    @Test
+    public void test_compareTo()
+    {
+        assertEquals(0, URIReference.parse("http://example.com/a/b/c/").compareTo(URIReference.parse("http://example.com/a/b/c/")));
+
+        assertTrue(URIReference.parse("127.0.0.1").compareTo(URIReference.parse("http://example.com/a/b/c/")) < 0);
+
+        assertThrowsNPE("A null value is not comparable.", () -> URIReference.parse("http://example.com/a/b/c/").compareTo(null));
+    }
 }
