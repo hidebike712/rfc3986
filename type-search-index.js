@@ -1,1 +1,1 @@
-typeSearchIndex = [{"l":"Authority","h":"","u":""},{"l":"Host","h":"","u":""},{"l":"HostType","h":"","u":""},{"l":"URIReference","h":"","u":""},{"l":"URIReferenceBuilder","h":"","u":""},{"l":"すべてのクラス","h":"","u":"allclasses-index.html"}]
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"org.czeal.rfc3986","l":"Authority"},{"p":"org.czeal.rfc3986","l":"Host"},{"p":"org.czeal.rfc3986","l":"HostType"},{"p":"org.czeal.rfc3986","l":"URIReference"},{"p":"org.czeal.rfc3986","l":"URIReferenceBuilder"}];updateSearchResults();
