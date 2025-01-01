@@ -17,10 +17,10 @@ package org.czeal.rfc3986;
 
 
 import static org.czeal.rfc3986.TestUtils.assertThrowsIAE;
+import static org.czeal.rfc3986.TestUtils.assertThrowsNPE;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.czeal.rfc3986.HostType.IPV4;
 import static org.czeal.rfc3986.HostType.IPV6;
@@ -150,7 +150,9 @@ public class AuthorityTest
     public void test_compareTo()
     {
         assertEquals(0, Authority.parse("example.com").compareTo(Authority.parse("example.com")));
+
         assertTrue(Authority.parse("127.0.0.1").compareTo(Authority.parse("example.com")) < 0);
-        assertThrows(NullPointerException.class, () -> Authority.parse("example.com").compareTo(null));
+
+        assertThrowsNPE("A null value is not comparable.", () -> Authority.parse("example.com").compareTo(null));
     }
 }
